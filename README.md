@@ -1,7 +1,7 @@
 # sweetdwm 
 
 ## introduction 
-this is a fork of sweetdwm but with some improvements such as changing dash to bash to increase portability and the application of several patches to increase functionality also fixed bugs such as buffer overflow and automated several processes to facilitate the installation.
+this is a fork of chadwm with some changes and improvements such as fixing some bugs like buffer overflow. 
 
 <img src="https://github.com/SweetMask4/dotfiles/blob/screenshot/main.png?raw=true">
 <img src="https://github.com/SweetMask4/dotfiles/blob/screenshot/dmenu.png?raw=true">
