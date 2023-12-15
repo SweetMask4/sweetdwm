@@ -3,7 +3,7 @@
 ## introduction 
 this is a fork of sweetdwm but with some improvements such as changing dash to bash to increase portability and the application of several patches to increase functionality also fixed bugs such as buffer overflow and automated several processes to facilitate the installation.
 
-<img src="https://github.com/SweetMask4/sweetdwm/blob/screenshots/screenshots/main.png?raw=true">
+<img src="https://github.com/SweetMask4/dotfiles/blob/screenshot/main.png?raw=true">
 <img src="https://github.com/SweetMask4/dotfiles/blob/screenshot/dmenu.png?raw=true">
 
 # Requirements
