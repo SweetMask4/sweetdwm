@@ -25,7 +25,6 @@ this is a fork of sweetdwm but with some improvements such as changing dash to b
 ```
 git clone https://github.com/siduck/sweetdwm --depth 1  ~/.config/sweetdwm
 cd ~/.config/sweetdwm/
-mv eww ~/.config
 cd sweetdwm
 sudo make install
 ```
@@ -66,9 +65,6 @@ Comment=dwm made beautiful
 Exec=/home/user/.config/sweetdwm/scripts/./run.sh 
 Type=Application 
 ```
-
-- [wallpaper](https://github.com/siduck/sweetdwm/blob/screenshots/screenshots/chad.png)
-
 # Recompile
 
 - You need to recompile dwm after every change you make to its source code.
