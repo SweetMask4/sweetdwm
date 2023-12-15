@@ -76,7 +76,7 @@ sudo make install
 ```
 # Change themes
 
-- Bar  : in bar.sh (line 9) and config.def.h (line 35)
+- Bar  : in bar.sh (line 13) and config.def.h (line 35)
 - dmenu : in config.def.h (line 23)
 
 # start configuration
