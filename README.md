@@ -8,7 +8,7 @@ this is a fork of chadwm with some changes and improvements such as fixing some 
 
 # Requirements
 
-- bash (shell)
+- dash (shell)
 - imlib2 
 - xsetroot package (status2d uses this to add colors on dwmbar)
 - JetbrainsMono Nerd Font or any nerd font but dont forget to set it in config.def.h

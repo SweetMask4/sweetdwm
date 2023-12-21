@@ -237,13 +237,13 @@ static const Key keys[] = {
     { MODKEY,                          XK_p,      spawn,     SHCMD("passmenu -p \"󰢁 Pass: \"") },
     { MODKEY,                          XK_q,      spawn,     SHCMD("logout-script.sh")},
     { MODKEY,                          XK_F1,     spawn,     SHCMD("radio-script.sh")},
-    { MODKEY,                          XK_F2,     spawn,     SHCMD("WallpaperSwitch") },
+    { MODKEY,                          XK_F2,     spawn,     SHCMD("changewallpaper") },
     { MODKEY,                          XK_F3,     spawn,     SHCMD("waldl.sh")},
     { MODKEY,                          XK_F4,     spawn,     SHCMD("setbg-script.sh") }, 
     { MODKEY,                          XK_F5,     spawn,     SHCMD("noter-script.sh")},
     { 0,                               XK_Print,  spawn,     SHCMD("maim-script.sh")  },
     { MODKEY,                          XK_x,      spawn,     SHCMD("monitors-script.sh") },
-    { MODKEY,                          XK_z,      spawn,     SHCMD("ShiftXMap") },
+    { MODKEY,                          XK_y,      spawn,     SHCMD("ytfzf -D") },
 
     TAGKEYS(                            XK_1,                       0)
     TAGKEYS(                            XK_2,                       1)
