@@ -20,4 +20,4 @@ xrdb -load ~/.config/X11/xresources & # Load .Xresources settings for urxvt term
 xrdb -load ~/.Xresources  &           # Load .Xresources settings for urxvt terminals
 xsetroot -cursor_name left_ptr &      # Change X shaped default cursor
 
-while chadwm && type chadwm >/dev/null; do :; done
+while sweetdwm && type sweetdwm >/dev/null; do :; done

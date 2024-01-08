@@ -1,7 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
 #include <X11/XF86keysym.h>
-
 /* appearance */
 static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int default_border = 0;   /* to switch back to default border after dynamic border resizing via keybinds */
@@ -34,6 +32,11 @@ static const int new_window_attach_on_end = 0; /*  1 means the new window will a
 
 static const char *fonts[]          = {"Iosevka:style:medium:size=12" ,"JetBrainsMono Nerd Font Mono:style:medium:size=19" };
 
+static const char *upvol[]      = {"volume", "-u",     NULL };
+static const char *downvol[]    = {"volume", "-d",     NULL };
+static const char *mutevol[]    = {"volume", "-m",     NULL };
+static const char *light_up[]   = {"brillo", "-A", "10", NULL};
+static const char *light_down[] = {"brillo", "-U", "10", NULL};
 
 // theme
 #include "themes/catppuccin.h"
@@ -83,8 +86,8 @@ static const Rule rules[] = {
      */
     /* class      instance    title       tags mask     iscentered   isfloating   monitor */
     { "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-    { "LibreWolf",  NULL,       NULL,       1 << 8,     0,           0,         -1 },
-    { "TelegramDesktop",    NULL,     NULL, 0,          1,           1,         -1 },
+    { "LibreWolf",  NULL,       NULL,      1 << 0,            1,           0,         -1 },
+    { "TelegramDesktop",    NULL,     NULL, 1 << 4,          1,           1,         -1 },
 };
 
 /* layout(s) */
@@ -132,10 +135,12 @@ static const Layout layouts[] = {
 static const Key keys[] = {
     /* modifier                         key         function        argument */
 
-    // audio 
-   {0,   XF86XK_AudioLowerVolume, spawn, SHCMD("volume down") },
-	 {0,   XF86XK_AudioMute, spawn, SHCMD("volume mute") },
-	 {0,   XF86XK_AudioRaiseVolume, spawn, SHCMD("volume up")},
+  // audio 
+	{ 0,			                      XF86XK_AudioLowerVolume,	spawn,			{.v = downvol } },
+	{ 0,			                      XF86XK_AudioMute,	        spawn,			{.v = mutevol } },
+	{ 0,			                      XF86XK_AudioRaiseVolume,	spawn,			{.v = upvol   } },
+  { 0,			                      XF86XK_MonBrightnessUp,	  spawn,			{.v = light_up}} ,
+	{ 0,			                      XF86XK_MonBrightnessDown,	spawn,			{.v = light_down}},
 
     // screenshot fullscreen and cropped
     {MODKEY|ControlMask,                XK_u,       spawn,
@@ -144,10 +149,10 @@ static const Key keys[] = {
         SHCMD("maim --select | xclip -selection clipboard -t image/png")},
 
     { MODKEY,                           XK_c,       spawn,          SHCMD("dmenu_run") },
-    { MODKEY,                           XK_Return,  spawn,          SHCMD("alacritty")},
+    { MODKEY,                           XK_Return,  spawn,          SHCMD("st")},
 
     // toggle stuff
-    { MODKEY,                           XK_b,       togglebar,      {0} },
+    { MODKEY|ShiftMask,                 XK_b,       togglebar,      {0} },
     { MODKEY|ControlMask,               XK_t,       togglegaps,     {0} },
     { MODKEY|ShiftMask,                 XK_space,   togglefloating, {0} },
     { MODKEY,                           XK_f,       togglefullscr,  {0} },
@@ -221,7 +226,7 @@ static const Key keys[] = {
     { MODKEY|ShiftMask,                 XK_w,       setborderpx,    {.i = default_border } },
 
     // kill dwm
-    { MODKEY|ShiftMask,                 XK_q,       spawn,        SHCMD("killall bar.sh chadwm") },
+    { MODKEY|ShiftMask,                 XK_q,       spawn,        SHCMD("killall bar.sh sweetdwm") },
 
     // kill window
     { MODKEY,                           XK_w,       killclient,     {0} },
@@ -233,17 +238,26 @@ static const Key keys[] = {
     { MODKEY,                           XK_e,       hidewin,        {0} },
     { MODKEY|ShiftMask,                 XK_e,       restorewin,     {0} },
 
-    // other
-    { MODKEY,                          XK_p,      spawn,     SHCMD("passmenu -p \"󰢁 Pass: \"") },
-    { MODKEY,                          XK_q,      spawn,     SHCMD("logout-script.sh")},
+    // misc
+    { MODKEY,                          XK_p,      spawn,     SHCMD("passmenu -l 10 -p \"󰢁 Pass: \"") },
+    { MODKEY,                          XK_o,      spawn,     SHCMD("otp") },
+    { MODKEY,                          XK_F3,     spawn,     SHCMD("waldl")},
+    { MODKEY,                          XK_y,      spawn,     SHCMD("ytfzf -D") },
+    { MODKEY|ShiftMask,                XK_z,      spawn,     SHCMD("rssadd") },
     { MODKEY,                          XK_F1,     spawn,     SHCMD("radio-script.sh")},
     { MODKEY,                          XK_F2,     spawn,     SHCMD("changewallpaper") },
-    { MODKEY,                          XK_F3,     spawn,     SHCMD("waldl.sh")},
-    { MODKEY,                          XK_F4,     spawn,     SHCMD("setbg-script.sh") }, 
-    { MODKEY,                          XK_F5,     spawn,     SHCMD("noter-script.sh")},
+    { MODKEY,                          XK_h,      spawn,     SHCMD("setbg-script.sh") }, 
     { 0,                               XK_Print,  spawn,     SHCMD("maim-script.sh")  },
     { MODKEY,                          XK_x,      spawn,     SHCMD("monitors-script.sh") },
-    { MODKEY,                          XK_y,      spawn,     SHCMD("ytfzf -D") },
+    { MODKEY|ShiftMask,                XK_o,      spawn,     SHCMD("bookman-script.sh") },
+    { MODKEY,                          XK_q,      spawn,     SHCMD("logout-script.sh") },
+    { MODKEY,                          XK_a,      spawn,     SHCMD("confedit-script.sh") },
+    { MODKEY|ControlMask,                XK_k,      spawn,     SHCMD("kill-script.sh") },
+    { MODKEY|ShiftMask,                XK_h,      spawn,     SHCMD("websearch-script.sh") },
+
+    { MODKEY,                          XK_F6,     spawn,     SHCMD("playerctl stop --all-players; slock & xset dpms force off") },
+    { MODKEY,                          XK_b,      spawn,     SHCMD("io.gitlab.librewolf-community") },
+
 
     TAGKEYS(                            XK_1,                       0)
     TAGKEYS(                            XK_2,                       1)
